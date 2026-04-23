@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Psyverse Skills — Claude Code Skills for Shipping Bilingual Web Projects</title>
+
+<!-- SEO · GEO -->
+<meta name="description" content="A trio of Claude Code skills for shipping, ranking, and promoting bilingual web projects: psyverse-launch, psyverse-ranking, psyverse-promote. Open source, MIT-licensed." />
+<meta name="keywords" content="Claude Code, Claude skills, Anthropic, AI agent, web deployment, bilingual website, Next.js Vercel, OG image, X Twitter automation, Playwright, Aliyun DNS" />
+<meta name="author" content="Gewenbo" />
+<link rel="canonical" href="https://skills.psyverse.fun/" />
+<link rel="alternate" hreflang="en" href="https://skills.psyverse.fun/" />
+<link rel="alternate" hreflang="zh-CN" href="https://skills.psyverse.fun/" />
+<link rel="alternate" hreflang="x-default" href="https://skills.psyverse.fun/" />
+<meta property="og:title" content="Psyverse Skills" />
+<meta property="og:description" content="Three Claude Code skills for shipping, ranking, and promoting bilingual web projects. The toolkit behind 30+ live sites." />
+<meta property="og:url" content="https://skills.psyverse.fun/" />
+<meta property="og:site_name" content="Psyverse" />
+<meta property="og:type" content="website" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:locale:alternate" content="zh_CN" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Psyverse Skills" />
+<meta name="twitter:description" content="Three Claude Code skills for shipping, ranking, and promoting bilingual web projects." />
+<meta name="robots" content="index, follow" />
+<meta name="theme-color" content="#0d0e10" />
+
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='8' fill='%230d0e10'/%3E%3Cpath d='M14 18 L20 18 L20 30 L32 30 L32 18 L38 18 L38 46 L32 46 L32 36 L20 36 L20 46 L14 46 Z' fill='%2300ff9c'/%3E%3Ccircle cx='48' cy='22' r='4' fill='%23ff7eb6'/%3E%3C/svg%3E" />
+
+<script defer src="https://analytics-dashboard-two-blue.vercel.app/tracker.js"></script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Psyverse Skills",
+  "description": "Three Claude Code skills for shipping, ranking, and promoting bilingual web projects.",
+  "url": "https://skills.psyverse.fun/",
+  "inLanguage": ["en", "zh-CN"],
+  "author": { "@type": "Person", "name": "Gewenbo", "url": "https://psyverse.fun/" },
+  "publisher": { "@type": "Organization", "name": "Psyverse", "url": "https://psyverse.fun/" }
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Instrument+Serif:ital@0;1&family=Noto+Serif+SC:wght@300;400;500;700&display=swap" rel="stylesheet" />
+
+<style>
+:root {
+  --bg: #0d0e10;
+  --bg-2: #14161a;
+  --bg-3: #1a1d22;
+  --rule: #252830;
+  --rule-bright: #353a45;
+  --ink: #e8eaed;
+  --ink-2: #b8bcc4;
+  --ink-mute: #7a8090;
+  --ink-faint: #4a5060;
+  --green: #00ff9c;
+  --green-deep: #00b870;
+  --pink: #ff7eb6;
+  --pink-deep: #c0508a;
+  --amber: #ffb800;
+  --blue: #6dd3ff;
+  --mono: 'JetBrains Mono', 'SF Mono', monospace;
+  --serif: 'Instrument Serif', 'Times New Roman', serif;
+  --cjk: 'Noto Serif SC', serif;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--mono);
+  font-size: 15px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  background-image:
+    radial-gradient(ellipse 800px 400px at 20% 0%, rgba(0, 255, 156, 0.07) 0%, transparent 60%),
+    radial-gradient(ellipse 600px 400px at 80% 30%, rgba(255, 126, 182, 0.06) 0%, transparent 60%);
+}
+body::before {
+  content: '';
+  position: fixed; inset: 0; pointer-events: none; z-index: 1;
+  background-image:
+    repeating-linear-gradient(0deg, transparent 0, transparent 40px, rgba(255,255,255,0.012) 40px, rgba(255,255,255,0.012) 41px),
+    repeating-linear-gradient(90deg, transparent 0, transparent 40px, rgba(255,255,255,0.012) 40px, rgba(255,255,255,0.012) 41px);
+}
+.wrap > * { position: relative; z-index: 2; }
+
+/* ── HEADER ─────────────────── */
+.bar {
+  position: sticky; top: 0; z-index: 50;
+  background: rgba(13, 14, 16, 0.85);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--rule);
+}
+.bar-inner {
+  max-width: 1200px; margin: 0 auto;
+  padding: 16px 32px;
+  display: flex; justify-content: space-between; align-items: center;
+  flex-wrap: wrap; gap: 16px;
+}
+.brand {
+  font-family: var(--mono);
+  font-weight: 600; font-size: 16px;
+  color: var(--ink); text-decoration: none;
+  letter-spacing: 0.02em;
+  display: flex; align-items: center; gap: 12px;
+}
+.brand .glyph {
+  display: inline-flex;
+  width: 26px; height: 26px;
+  background: var(--bg-2);
+  border: 1px solid var(--green);
+  border-radius: 6px;
+  align-items: center; justify-content: center;
+  color: var(--green); font-weight: 700;
+  font-size: 13px;
+  box-shadow: 0 0 12px rgba(0, 255, 156, 0.3);
+}
+.brand .meta { color: var(--ink-mute); font-weight: 400; font-size: 12px; }
+.bar-nav {
+  display: flex; gap: 28px; font-size: 12px;
+  color: var(--ink-mute);
+  letter-spacing: 0.15em; text-transform: uppercase;
+}
+.bar-nav a {
+  color: var(--ink-mute); text-decoration: none;
+  transition: color 0.2s;
+}
+.bar-nav a:hover { color: var(--green); }
+.bar-nav .gh {
+  color: var(--green);
+  border: 1px solid var(--green);
+  padding: 5px 12px;
+  border-radius: 6px;
+  text-transform: none;
+  letter-spacing: 0.02em;
+}
+.bar-nav .gh:hover { background: var(--green); color: var(--bg); }
+
+/* ── HERO ─────────────────── */
+.hero {
+  max-width: 1200px; margin: 0 auto;
+  padding: 96px 32px 80px;
+  border-bottom: 1px solid var(--rule);
+}
+.hero-eyebrow {
+  font-family: var(--mono); font-size: 11px;
+  color: var(--green);
+  letter-spacing: 0.4em; text-transform: uppercase;
+  margin-bottom: 28px;
+  display: flex; align-items: center; gap: 14px;
+}
+.hero-eyebrow::before {
+  content: ''; width: 36px; height: 1px; background: var(--green);
+}
+.hero h1 {
+  font-family: var(--serif); font-style: italic;
+  font-weight: 400;
+  font-size: clamp(56px, 9vw, 120px);
+  line-height: 0.98;
+  letter-spacing: -0.025em;
+  color: var(--ink);
+  margin-bottom: 24px;
+}
+.hero h1 .accent { color: var(--green); font-style: normal; font-family: var(--mono); font-weight: 500; font-size: 0.7em; letter-spacing: -0.04em; }
+.hero h1 .pink { color: var(--pink); font-family: var(--mono); font-weight: 500; font-size: 0.7em; letter-spacing: -0.04em; font-style: normal; }
+.hero-cn {
+  font-family: var(--cjk); font-weight: 300;
+  font-size: clamp(18px, 1.8vw, 24px);
+  letter-spacing: 0.5em;
+  color: var(--ink-mute);
+  margin-bottom: 36px; text-indent: 0.5em;
+}
+.hero-dek {
+  font-family: var(--serif); font-style: italic;
+  font-weight: 300;
+  font-size: clamp(20px, 2.4vw, 30px);
+  line-height: 1.4;
+  color: var(--ink-2);
+  max-width: 760px;
+  margin-bottom: 40px;
+}
+.hero-dek strong {
+  font-style: normal; font-family: var(--mono);
+  color: var(--green); font-weight: 500;
+  font-size: 0.85em;
+}
+.hero-dek em { color: var(--pink); font-style: italic; }
+.hero-actions {
+  display: flex; gap: 14px; flex-wrap: wrap;
+  margin-top: 32px;
+}
+.btn {
+  font-family: var(--mono); font-size: 13px;
+  font-weight: 500;
+  padding: 14px 22px;
+  border-radius: 8px;
+  text-decoration: none;
+  display: inline-flex; align-items: center; gap: 10px;
+  transition: all 0.2s;
+  letter-spacing: 0.01em;
+}
+.btn-primary {
+  background: var(--green);
+  color: var(--bg);
+  border: 1px solid var(--green);
+  box-shadow: 0 4px 24px rgba(0, 255, 156, 0.25);
+}
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(0, 255, 156, 0.4);
+}
+.btn-secondary {
+  background: transparent;
+  color: var(--ink);
+  border: 1px solid var(--rule-bright);
+}
+.btn-secondary:hover {
+  border-color: var(--green);
+  color: var(--green);
+}
+.btn .arrow { font-family: var(--mono); }
+
+/* ── INSTALL ─────────────────── */
+.install {
+  max-width: 1200px; margin: 0 auto;
+  padding: 56px 32px;
+  border-bottom: 1px solid var(--rule);
+}
+.install-row {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 56px;
+  align-items: start;
+}
+.install-label {
+  font-family: var(--mono); font-size: 11px;
+  color: var(--green); letter-spacing: 0.3em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+.install-title {
+  font-family: var(--serif); font-style: italic;
+  font-size: 28px; color: var(--ink);
+  line-height: 1.15;
+}
+.install-cmd {
+  background: var(--bg-2);
+  border: 1px solid var(--rule);
+  border-left: 3px solid var(--green);
+  padding: 22px 26px;
+  font-family: var(--mono); font-size: 13px;
+  line-height: 1.7;
+  color: var(--ink-2);
+  border-radius: 8px;
+  overflow-x: auto;
+}
+.install-cmd .comment { color: var(--ink-faint); }
+.install-cmd .cmd { color: var(--green); }
+.install-cmd .arg { color: var(--blue); }
+
+/* ── SKILLS GRID ─────────────────── */
+.skills-section {
+  max-width: 1200px; margin: 0 auto;
+  padding: 80px 32px;
+  border-bottom: 1px solid var(--rule);
+}
+.section-head {
+  margin-bottom: 56px;
+  display: flex; justify-content: space-between; align-items: end;
+  flex-wrap: wrap; gap: 24px;
+  border-bottom: 2px solid var(--green);
+  padding-bottom: 20px;
+}
+.section-head h2 {
+  font-family: var(--serif); font-style: italic;
+  font-weight: 400; font-size: clamp(36px, 5vw, 56px);
+  letter-spacing: -0.02em; color: var(--ink);
+  line-height: 1;
+}
+.section-head h2 .accent { color: var(--green); font-style: normal; font-family: var(--mono); font-weight: 500; font-size: 0.5em; vertical-align: 6px; letter-spacing: -0.03em; }
+.section-head .sub {
+  font-family: var(--mono); font-size: 12px;
+  letter-spacing: 0.2em; color: var(--ink-mute);
+  text-transform: uppercase;
+}
+.section-head .sub b { color: var(--green); }
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1px;
+  background: var(--rule);
+  border: 1px solid var(--rule);
+  border-radius: 12px;
+  overflow: hidden;
+}
+.skill {
+  background: var(--bg-2);
+  padding: 36px 32px;
+  position: relative;
+  transition: background 0.3s;
+  display: flex; flex-direction: column;
+}
+.skill:hover { background: var(--bg-3); }
+.skill .meta {
+  font-family: var(--mono); font-size: 11px;
+  letter-spacing: 0.25em; text-transform: uppercase;
+  color: var(--ink-mute); margin-bottom: 14px;
+  display: flex; align-items: center; gap: 10px;
+}
+.skill .meta .num {
+  color: var(--bg); background: var(--green);
+  padding: 2px 8px; border-radius: 4px;
+  font-weight: 700;
+}
+.skill .invoke {
+  font-family: var(--mono); font-size: 22px;
+  color: var(--green); font-weight: 600;
+  letter-spacing: -0.01em;
+  margin-bottom: 6px;
+}
+.skill .name-cn {
+  font-family: var(--cjk); font-size: 13px;
+  color: var(--ink-mute); letter-spacing: 0.2em;
+  margin-bottom: 22px;
+}
+.skill .what {
+  font-family: var(--serif); font-style: italic;
+  font-weight: 300;
+  font-size: 18px; line-height: 1.4;
+  color: var(--ink); margin-bottom: 24px;
+}
+.skill .what em { color: var(--pink); font-style: italic; }
+.skill .stages {
+  list-style: none; padding: 0; margin: 0;
+  font-size: 12.5px; line-height: 1.55;
+  color: var(--ink-2);
+  flex: 1;
+  border-top: 1px solid var(--rule);
+  padding-top: 18px;
+}
+.skill .stages li {
+  display: flex; gap: 10px;
+  padding: 4px 0;
+}
+.skill .stages li .check {
+  color: var(--green); font-family: var(--mono);
+  font-weight: 700;
+}
+.skill .stages li b { color: var(--ink); font-weight: 500; }
+.skill .demo {
+  margin-top: 24px;
+  padding-top: 18px;
+  border-top: 1px solid var(--rule);
+  font-family: var(--mono); font-size: 11px;
+  color: var(--ink-mute);
+  letter-spacing: 0.1em;
+}
+.skill .demo a {
+  color: var(--green); text-decoration: none;
+  border-bottom: 1px dashed var(--green-deep);
+}
+.skill .demo a:hover { color: var(--ink); border-bottom-color: var(--ink); }
+
+/* ── PHILOSOPHY ─────────────────── */
+.philosophy {
+  max-width: 1200px; margin: 0 auto;
+  padding: 80px 32px;
+  border-bottom: 1px solid var(--rule);
+}
+.phil-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px 64px;
+}
+.phil-item {
+  border-left: 2px solid var(--pink);
+  padding-left: 22px;
+}
+.phil-item h3 {
+  font-family: var(--serif); font-style: italic;
+  font-weight: 400; font-size: 24px;
+  color: var(--ink); margin-bottom: 8px;
+  line-height: 1.2;
+}
+.phil-item h3 em { color: var(--pink); }
+.phil-item p {
+  font-family: var(--mono); font-size: 13px;
+  line-height: 1.6; color: var(--ink-2);
+}
+.phil-item p strong {
+  color: var(--green); font-weight: 500;
+}
+
+/* ── PROOF / EXAMPLES ─────────────────── */
+.proof {
+  max-width: 1200px; margin: 0 auto;
+  padding: 80px 32px;
+  border-bottom: 1px solid var(--rule);
+}
+.proof-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--rule);
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  overflow: hidden;
+}
+.proof-cell {
+  background: var(--bg-2);
+  padding: 24px;
+  transition: background 0.3s;
+}
+.proof-cell:hover { background: var(--bg-3); }
+.proof-cell .url {
+  font-family: var(--mono); font-size: 12px;
+  color: var(--green);
+  margin-bottom: 6px;
+  display: flex; justify-content: space-between;
+  align-items: baseline;
+}
+.proof-cell .url a { color: var(--green); text-decoration: none; }
+.proof-cell .url a:hover { color: var(--ink); }
+.proof-cell .url .stack { color: var(--ink-faint); font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; }
+.proof-cell .label {
+  font-family: var(--serif); font-style: italic;
+  font-size: 18px; color: var(--ink);
+  line-height: 1.2; margin-bottom: 6px;
+}
+.proof-cell .desc {
+  font-size: 12.5px; color: var(--ink-2);
+  line-height: 1.5;
+}
+
+/* ── ENV ─────────────────── */
+.env {
+  max-width: 1200px; margin: 0 auto;
+  padding: 80px 32px;
+  border-bottom: 1px solid var(--rule);
+}
+.env-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--mono); font-size: 13px;
+  background: var(--bg-2);
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  overflow: hidden;
+}
+.env-table th, .env-table td {
+  padding: 14px 18px;
+  text-align: left;
+  border-bottom: 1px solid var(--rule);
+}
+.env-table thead th {
+  background: var(--bg-3);
+  font-size: 11px; letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--green);
+  font-weight: 500;
+}
+.env-table tbody tr:last-child td { border-bottom: none; }
+.env-table tbody tr:hover { background: var(--bg-3); }
+.env-table .skill-col { color: var(--green); font-weight: 500; }
+.env-table .req-col code { background: var(--bg); padding: 3px 8px; border-radius: 4px; color: var(--blue); font-size: 12px; }
+.env-table .use-col { color: var(--ink-2); font-size: 12.5px; }
+
+/* ── FOOTER ─────────────────── */
+footer {
+  max-width: 1200px; margin: 0 auto;
+  padding: 64px 32px 48px;
+  text-align: center;
+  border-top: 2px solid var(--green);
+}
+.foot-coda {
+  font-family: var(--serif); font-style: italic;
+  font-size: clamp(22px, 2.6vw, 32px);
+  color: var(--ink); line-height: 1.4;
+  margin-bottom: 28px;
+  max-width: 720px; margin-left: auto; margin-right: auto;
+}
+.foot-coda em { color: var(--green); }
+.foot-meta {
+  font-family: var(--mono); font-size: 11px;
+  color: var(--ink-mute); letter-spacing: 0.25em;
+  text-transform: uppercase;
+}
+.foot-meta a {
+  color: var(--green); text-decoration: none;
+  margin: 0 12px;
+}
+.foot-meta a:hover { color: var(--ink); text-decoration: underline; }
+.foot-license {
+  margin-top: 18px;
+  font-size: 11px; color: var(--ink-faint);
+  font-family: var(--mono);
+  letter-spacing: 0.15em;
+}
+
+@media (max-width: 900px) {
+  .skills-grid { grid-template-columns: 1fr; }
+  .phil-grid { grid-template-columns: 1fr; }
+  .proof-grid { grid-template-columns: 1fr; }
+  .install-row { grid-template-columns: 1fr; gap: 24px; }
+  .bar-nav { gap: 16px; font-size: 11px; }
+  .bar-inner { padding: 14px 22px; }
+  .hero, .install, .skills-section, .philosophy, .proof, .env, footer { padding-left: 22px; padding-right: 22px; }
+  .skill { padding: 28px 22px; }
+  .env-table { font-size: 11px; }
+  .env-table th, .env-table td { padding: 10px 12px; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<!-- ═══════ HEADER ═══════ -->
+<header class="bar">
+  <div class="bar-inner">
+    <a href="#top" class="brand">
+      <span class="glyph">P</span>
+      psyverse-skills <span class="meta">· v1.0</span>
+    </a>
+    <nav class="bar-nav">
+      <a href="#install">Install</a>
+      <a href="#skills">Skills</a>
+      <a href="#proof">Built With</a>
+      <a href="#env">Env</a>
+      <a href="https://github.com/gewenbo888/psyverse-skills" class="gh">github ↗</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ═══════ HERO ═══════ -->
+<section class="hero" id="top">
+  <div class="hero-eyebrow">Three Claude Code Skills · MIT</div>
+  <h1>Ship<span class="pink">. </span>Rank<span class="pink">. </span>Promote<span class="accent">.</span></h1>
+  <div class="hero-cn">建 站 · 排 名 · 推 广</div>
+  <p class="hero-dek">
+    A trio of <strong>Claude Code skills</strong> for shipping, ranking, and promoting bilingual web projects. Extracted from a year of running <em>thirty-plus live sites</em> and refined into something a stranger can clone, install, and ship with in an afternoon.
+  </p>
+  <div class="hero-actions">
+    <a href="https://github.com/gewenbo888/psyverse-skills" class="btn btn-primary">github.com/gewenbo888/psyverse-skills <span class="arrow">↗</span></a>
+    <a href="#install" class="btn btn-secondary">install ↓</a>
+  </div>
+</section>
+
+<!-- ═══════ INSTALL ═══════ -->
+<section class="install" id="install">
+  <div class="install-row">
+    <div>
+      <div class="install-label">Install</div>
+      <div class="install-title">Two commands and a slash invocation.</div>
+    </div>
+    <div class="install-cmd"><span class="comment"># Drop the three skills into your Claude Code skills dir</span>
+<span class="cmd">cd</span> <span class="arg">~/.claude/skills</span>
+<span class="cmd">git clone</span> <span class="arg">https://github.com/gewenbo888/psyverse-skills.git _psyverse</span>
+<span class="cmd">mv</span> <span class="arg">_psyverse/psyverse-* . && rm -rf _psyverse</span>
+
+<span class="comment"># Then in any Claude Code session:</span>
+/psyverse-launch
+/psyverse-ranking
+/psyverse-promote</div>
+  </div>
+</section>
+
+<!-- ═══════ SKILLS GRID ═══════ -->
+<section class="skills-section" id="skills">
+  <div class="section-head">
+    <h2>The three skills <span class="accent">[ 3 / 3 ]</span></h2>
+    <span class="sub">Use one. Use all. <b>Pair as needed.</b></span>
+  </div>
+
+  <div class="skills-grid">
+
+    <!-- LAUNCH -->
+    <div class="skill">
+      <div class="meta"><span class="num">01</span>SHIP A SITE</div>
+      <div class="invoke">/psyverse-launch</div>
+      <div class="name-cn">建 站</div>
+      <p class="what">From an empty directory to a live, bilingual, shareable site at <em>{slug}.psyverse.fun</em> — in one workflow.</p>
+      <ul class="stages">
+        <li><span class="check">✓</span><span><b>Stage 1.</b> Build the site (Next.js or HTML)</span></li>
+        <li><span class="check">✓</span><span><b>Stage 2.</b> SEO/GEO metadata (OG · Twitter · JSON-LD · hreflang)</span></li>
+        <li><span class="check">✓</span><span><b>Stage 2.5.</b> 1200×630 share image (auto-screenshot)</span></li>
+        <li><span class="check">✓</span><span><b>Stage 3.</b> Inline SVG favicon</span></li>
+        <li><span class="check">✓</span><span><b>Stage 4.</b> Bilingual README</span></li>
+        <li><span class="check">✓</span><span><b>Stage 5.</b> GitHub repo creation</span></li>
+        <li><span class="check">✓</span><span><b>Stage 6.</b> Vercel deploy</span></li>
+        <li><span class="check">✓</span><span><b>Stage 7.</b> Analytics dashboard registration</span></li>
+        <li><span class="check">✓</span><span><b>Stage 8.</b> Aliyun DNS CNAME · Vercel domain attach · TXT verify · smoke test</span></li>
+      </ul>
+      <div class="demo">USED IN <a href="https://psyverse.fun">psyverse.fun</a> · <a href="https://kol.psyverse.fun">kol.psyverse.fun</a> · <a href="https://libertarian.psyverse.fun">libertarian.psyverse.fun</a> · <a href="https://mindseye.psyverse.fun">mindseye.psyverse.fun</a></div>
+    </div>
+
+    <!-- RANKING -->
+    <div class="skill">
+      <div class="meta"><span class="num">02</span>CLONE A RANKING</div>
+      <div class="invoke">/psyverse-ranking</div>
+      <div class="name-cn">排 名</div>
+      <p class="what">Clone a bilingual Next.js <em>ranking template</em> for any community — researchers, KOLs, athletes, founders, artists. Same shape, different domain.</p>
+      <ul class="stages">
+        <li><span class="check">✓</span><span><b>Inputs.</b> Slug · topic · group axis · metric semantics</span></li>
+        <li><span class="check">✓</span><span><b>Clone.</b> Next.js 16 · React 19 · Tailwind 4 template</span></li>
+        <li><span class="check">✓</span><span><b>Swap.</b> Dataset · i18n labels · metadata · favicon</span></li>
+        <li><span class="check">✓</span><span><b>Render.</b> Rankings tab + Group/Province tab</span></li>
+        <li><span class="check">✓</span><span><b>Features.</b> Sortable columns · search · region filter · expandable detail</span></li>
+        <li><span class="check">✓</span><span><b>Bilingual.</b> EN ↔ 中文 toggle preserved</span></li>
+        <li><span class="check">✓</span><span><b>Hand-off.</b> Runs psyverse-launch Stages 5-8 to ship</span></li>
+      </ul>
+      <div class="demo">USED IN <a href="https://researchers.psyverse.fun">researchers.psyverse.fun</a> · <a href="https://cnkol.psyverse.fun">cnkol.psyverse.fun</a></div>
+    </div>
+
+    <!-- PROMOTE -->
+    <div class="skill">
+      <div class="meta"><span class="num">03</span>POST TO X</div>
+      <div class="invoke">/psyverse-promote</div>
+      <div class="name-cn">推 广</div>
+      <p class="what">Draft and stage Twitter/X posts for any project — six archetypes, bilingual EN+中文, optionally <em>posted directly</em> via browser automation.</p>
+      <ul class="stages">
+        <li><span class="check">✓</span><span><b>Archetype 1.</b> launch — announce a brand-new site</span></li>
+        <li><span class="check">✓</span><span><b>Archetype 2.</b> thread — numbered breakdown</span></li>
+        <li><span class="check">✓</span><span><b>Archetype 3.</b> hot-take — contrarian one-liner</span></li>
+        <li><span class="check">✓</span><span><b>Archetype 4.</b> demo — screenshot-led caption</span></li>
+        <li><span class="check">✓</span><span><b>Archetype 5.</b> cross-promo — triptych of sibling sites</span></li>
+        <li><span class="check">✓</span><span><b>Archetype 6.</b> revival — pull older project back</span></li>
+        <li><span class="check">✓</span><span><b>Posting.</b> X API v2 helper + Playwright CDP-attach (no API credits needed)</span></li>
+      </ul>
+      <div class="demo">USED IN every Psyverse launch post since April 2026</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════ PROOF / BUILT WITH ═══════ -->
+<section class="proof" id="proof">
+  <div class="section-head">
+    <h2>Built with <span class="accent">[ 30+ live sites ]</span></h2>
+    <span class="sub">Every one shipped through these skills · <b>same flow, different topic</b></span>
+  </div>
+
+  <div class="proof-grid">
+
+    <div class="proof-cell">
+      <div class="url"><a href="https://psyverse.fun">psyverse.fun</a><span class="stack">HTML</span></div>
+      <div class="label">Manifesto · 一使命</div>
+      <div class="desc">The portfolio root — a bilingual personal manifesto in 16 sections, ascending order from One Mission to Sixteen Visions.</div>
+    </div>
+
+    <div class="proof-cell">
+      <div class="url"><a href="https://kol.psyverse.fun">kol.psyverse.fun</a><span class="stack">HTML · TICKER</span></div>
+      <div class="label">Signals · 信号</div>
+      <div class="desc">A field guide to crypto KOLs and projects — Bloomberg-amber on black, animated price ticker, 11 sections.</div>
+    </div>
+
+    <div class="proof-cell">
+      <div class="url"><a href="https://libertarian.psyverse.fun">libertarian.psyverse.fun</a><span class="stack">HTML</span></div>
+      <div class="label">On Liberty · 论自由</div>
+      <div class="desc">A libertarian manifesto in ten sections, designed in a 19th-century broadside register with a cypherpunk crypto section.</div>
+    </div>
+
+    <div class="proof-cell">
+      <div class="url"><a href="https://mindseye.psyverse.fun">mindseye.psyverse.fun</a><span class="stack">HTML</span></div>
+      <div class="label">The Mind's Eye · 心眼</div>
+      <div class="desc">A field study of visual vs. linguistic cognition — neuroscience, the cortical atlas, and AI's missing mind's eye.</div>
+    </div>
+
+    <div class="proof-cell">
+      <div class="url"><a href="https://researchers.psyverse.fun">researchers.psyverse.fun</a><span class="stack">NEXT.JS · RANKING</span></div>
+      <div class="label">Chinese AI Researchers</div>
+      <div class="desc">Global influence ranking of AI researchers of Chinese descent — built with /psyverse-ranking; first artifact of the template.</div>
+    </div>
+
+    <div class="proof-cell">
+      <div class="url"><a href="https://cnkol.psyverse.fun">cnkol.psyverse.fun</a><span class="stack">NEXT.JS · RANKING</span></div>
+      <div class="label">Chinese Crypto KOLs · 华语加密</div>
+      <div class="desc">Same ranking template, different community — ~50 KOLs across exchanges, mining, DeFi, VCs, media, and anons.</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════ PHILOSOPHY ═══════ -->
+<section class="philosophy">
+  <div class="section-head">
+    <h2>Five opinions baked in</h2>
+    <span class="sub">From a year of <b>shipping every week</b></span>
+  </div>
+
+  <div class="phil-grid">
+
+    <div class="phil-item">
+      <h3>Bilingual <em>by default</em>.</h3>
+      <p>Every site ships with English + 中文 metadata, hreflang alternates, OG locale, and content pairs. The skills <strong>enforce this in the templates</strong> — opting out is harder than opting in.</p>
+    </div>
+
+    <div class="phil-item">
+      <h3>Custom domains over <em>vercel.app</em>.</h3>
+      <p>A <code>*.vercel.app</code> URL signals 'preview'. A custom domain signals 'I shipped this'. Stage 8 is non-negotiable; the launch isn't done until <strong>{slug}.psyverse.fun returns 200</strong>.</p>
+    </div>
+
+    <div class="phil-item">
+      <h3>Real artifacts, <em>not just code</em>.</h3>
+      <p>Every skill produces something durable: a GitHub repo, a deployed site, a registered analytics entry, drafted social copy. <strong>Disk first, talk second.</strong></p>
+    </div>
+
+    <div class="phil-item">
+      <h3>Idempotent <em>everywhere</em>.</h3>
+      <p>Re-running any skill should be safe. <code>og_shoot.py</code> skips already-patched files. <code>tweet.py</code> auto-refreshes expired tokens. The launch flow detects existing repos. <strong>Replays don't regress state.</strong></p>
+    </div>
+
+    <div class="phil-item">
+      <h3>No surveillance-grade <em>analytics</em>.</h3>
+      <p>One page-view counter per visit, hostname-normalized, no cookies, no fingerprinting, no per-user tracking. <strong>Page views, not pixels in your eye.</strong></p>
+    </div>
+
+    <div class="phil-item">
+      <h3>Voice the skill, then <em>forget it</em>.</h3>
+      <p>Each skill is a single SKILL.md plus 0-3 helper scripts. No package to maintain, no SDK to version, no breaking change to migrate. <strong>Edit the markdown when the workflow shifts.</strong></p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════ ENV ═══════ -->
+<section class="env" id="env">
+  <div class="section-head">
+    <h2>What you need installed</h2>
+    <span class="sub">All env vars are <b>referenced by name</b> — none hardcoded</span>
+  </div>
+
+  <table class="env-table">
+    <thead>
+      <tr>
+        <th>Skill</th>
+        <th>Requirement</th>
+        <th>What it powers</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td class="skill-col">launch</td><td class="req-col"><code>gh</code> CLI</td><td class="use-col">GitHub repo creation (gewenbo888/{slug})</td></tr>
+      <tr><td class="skill-col">launch</td><td class="req-col"><code>vercel</code> CLI logged in</td><td class="use-col">Deploy + auth.json read for REST API token</td></tr>
+      <tr><td class="skill-col">launch</td><td class="req-col"><code>$ALIYUN_KEY</code> · <code>$ALIYUN_SECRET</code></td><td class="use-col">DNS CNAME + TXT records via Aliyun SDK</td></tr>
+      <tr><td class="skill-col">launch</td><td class="req-col"><code>playwright</code> + chromium</td><td class="use-col">og_shoot.py — 1200×630 OG image generation</td></tr>
+      <tr><td class="skill-col">ranking</td><td class="req-col">Above + Next.js template repo</td><td class="use-col">Cloned from chinese-ai-researchers as base</td></tr>
+      <tr><td class="skill-col">promote</td><td class="req-col">Real Chrome installed</td><td class="use-col">tweet_browser.py — CDP attach to a Chrome you launch</td></tr>
+      <tr><td class="skill-col">promote</td><td class="req-col">Optional: X API v2 OAuth tokens</td><td class="use-col">tweet.py — direct API posting (Basic tier or higher)</td></tr>
+    </tbody>
+  </table>
+
+  <p style="font-family:var(--mono);font-size:12px;color:var(--ink-mute);margin-top:24px;line-height:1.7;">
+    <span style="color:var(--green);">→</span> The <code style="background:var(--bg-2);padding:2px 6px;border-radius:3px;color:var(--blue);">Aliyun</code> step assumes you own the apex domain at Aliyun. If your DNS is at Cloudflare or Namecheap, swap that one snippet — the rest of the pipeline is provider-agnostic.
+  </p>
+</section>
+
+<!-- ═══════ FOOTER ═══════ -->
+<footer>
+  <p class="foot-coda">
+    <em>"Disk first. Talk second."</em>
+  </p>
+  <div class="foot-meta">
+    <a href="https://github.com/gewenbo888/psyverse-skills">github</a> ·
+    <a href="https://psyverse.fun">psyverse.fun</a> ·
+    <a href="https://docs.claude.com/en/docs/claude-code">claude code</a>
+  </div>
+  <div class="foot-license">MIT · 2026 · GEWENBO</div>
+</footer>
+
+</div>
+</body>
+</html>
